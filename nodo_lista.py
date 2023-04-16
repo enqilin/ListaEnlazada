@@ -1,8 +1,8 @@
-class nodoLista(object):
+class nodoListaEnlazada(object):
     """Clase nodo Lista"""
     info , sig = None, None
 
-class Lista(object):
+class ListaEnlazada(object):
     """Clase lista simplemente elazada"""
     def __init__(self):
         """Crea una lista vacia"""
@@ -12,9 +12,9 @@ class Lista(object):
 
     def insertar(lista,dato):
         """Insertar el dato pasado en la lista"""
-        nodo = nodoLista()
+        nodo = nodoListaEnlazada()
         nodo.info = dato
-        if (lista.inicio is None) and (lista.inicio.info > dato):
+        if (lista.inicio is None) or (lista.inicio.info > dato):
             nodo.sig = lista.inicio
             lista.inicio = nodo
         else:
@@ -31,7 +31,7 @@ class Lista(object):
         """Devuelve true si la lista esta vacia"""
         return lista.inicio is None
 
-    def eliminar(lista):
+    def eliminar(lista,clave):
         """Elimina un elemento de la lista u lo devuelve si lo encuentra"""
         dato = None
         if(lista.inicio.info == clave):
@@ -45,7 +45,7 @@ class Lista(object):
                 anterior = anterior.sig
                 actual = actual.sig
             if(actual is not None):
-                dato actual.info
+                dato = actual.info
                 anterior.sig = actual.sig
                 lista.tamanio -= 1
         return dato
@@ -67,3 +67,12 @@ class Lista(object):
             print(aux.info)
             aux=aux.sig
 
+    def criterio(dato , campo = None):
+        dic = {}
+        if (hasattr(dato, "__dict__")):
+            dic = dato.__dict__
+        if campo is None or campo not in dic:
+            return dato
+        else:
+            return dic[campo]
+        

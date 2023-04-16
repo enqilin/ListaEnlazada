@@ -1,4 +1,8 @@
-from nodo_lista import Lista, insertar, buscar, eliminar, barrido
+from nodo_lista import Lista
+from nodo_lista import Lista as insertar
+from nodo_lista import Lista as buscar
+from nodo_lista import Lista as eliminar
+from nodo_lista import Lista as barrido
 
 
 lista = Lista()
